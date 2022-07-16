@@ -21,7 +21,7 @@ if (isset($_POST['signup'])) {
     }
         //then redirect to login page
     }
-};
+}
 
 if(isset($_POST['login'])){
     $query = "SELECT * FROM users WHERE email = '$email';";
@@ -30,6 +30,8 @@ if(isset($_POST['login'])){
 
     if (emailPresent($email)) {
         if($user['password'] === $password){
+            session_start();
+            $_SESSION['id'] = $user['id'];
             // redirect to home page
         }
         else {
@@ -38,6 +40,15 @@ if(isset($_POST['login'])){
         }
     }
     else {
-        echo "There is no user eith this email";
+        echo "There is no user with this email";
     }
-};
+}
+
+// http://localhost/auth.php?logout=true
+if(isset($_GET['logout'])){
+    if($_GET['logout'] == "true"){
+        session_start();
+        session_destroy();
+        // redirect to login page        
+    }
+}

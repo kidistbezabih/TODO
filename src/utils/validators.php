@@ -26,7 +26,7 @@ function validatedPassword($password) {
     }
 
     return true;
-};
+}
 
 function emailPresent($email) {
     $query = "SELECT * FROM users WHERE email = '$email';";
@@ -35,7 +35,8 @@ function emailPresent($email) {
         return true;
     }
     return false;
-};
+}
+
 
 
 
