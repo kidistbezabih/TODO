@@ -1,15 +1,14 @@
 <?php
-include '../databse/db.php';
+include '../database/db.php';
 include '../utils/validators.php';
 
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-
 if (isset($_POST['signup'])) {
+    $email =  $_POST['email'];
+    $password = $_POST['password'];
     $name = $_POST['name'];
     // ?? checking the validty of email
-    if(emailPresent) {
+    if(emailPresent($email)) {
         return "There is already a user with this email!";
     }
     else{
@@ -24,6 +23,8 @@ if (isset($_POST['signup'])) {
 }
 
 if(isset($_POST['login'])){
+    $email =  $_POST['email'];
+    $password = $_POST['password'];
     $query = "SELECT * FROM users WHERE email = '$email';";
     $result = mysqli_query($con, $query);
     $user = mysqli_fetch_assoc($result);
