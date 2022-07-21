@@ -4,7 +4,7 @@
   * @password
   * Return: true if condition satisfied
   */
-function validatedPassword($password) {
+function validatPassword($password) {
     if(strlen($password)) < 8{
         echo "Password must be greater than 8!";
         return false;
@@ -36,7 +36,4 @@ function emailPresent($email) {
     }
     return false;
 }
-
-
-
-
+ 
