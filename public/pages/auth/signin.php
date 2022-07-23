@@ -22,9 +22,13 @@ include "../../../src/utils/errorMessages.php";
               />
             </div>
             <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
+              <h1 class="text-4xl text-center mb-5 leading-none">Login</h1>
               <form method="POST" action="../../../src/controllers/auth.php">
                 <!-- Email input -->
                 <div class="mb-6">
+                <span class="h1">
+                  <?php if(isset($_GET['emailError'])) { echo printErrorMessage($_GET['emailError']); }?>
+                </span>
                   <input
                     type="text"
                     class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -34,7 +38,9 @@ include "../../../src/utils/errorMessages.php";
       
                 <!-- Password input -->
                 <div class="mb-6">
+                <span class="h1">
                   <?php if(isset($_GET['passwordError'])) { echo printErrorMessage($_GET['passwordError']); }?>
+                </span>
                   <input
                     type="password"
                     class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
