@@ -4,8 +4,8 @@
   * @password
   * Return: true if condition satisfied
   */
-function validatedPassword($password) {
-    if(strlen($password)) < 8{
+function validatePassword($password) {
+    if(strlen($password) < 8){
         echo "Password must be greater than 8!";
         return false;
     }
@@ -15,12 +15,12 @@ function validatedPassword($password) {
         return false;
     }
 
-    if(preg_match("/^[a-z]*$/i"), $password){
+    if(preg_match("/^[a-z]*$/i", $password)){
         echo "Password must contain numbers";
         return false;
     }
 
-    if(!preg_match("/^[a-z0-9]*$/i"), $password){
+    if(!preg_match("/^[a-z0-9]*$/i", $password)){
         echo "Password can only contain numbers and letters";
         return false;
     }
@@ -29,9 +29,11 @@ function validatedPassword($password) {
 }
 
 function emailPresent($email) {
+    include "../database/db.php";
+
     $query = "SELECT * FROM users WHERE email = '$email';";
-    $usersNum = mysqli_query($email);
-    if (mysqli_num_row($usersNum > 0)) {
+    $usersNum = mysqli_query($conn, $email);
+    if (mysqli_num_rows($usersNum) > 0) {
         return true;
     }
     return false;
