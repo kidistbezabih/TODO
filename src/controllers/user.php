@@ -30,6 +30,9 @@ function changeExistingPassword($newPassword) {
         return $newPassword;
     }
 }
+function emptyFunction() {
+
+}
 
 function confirmPassword($conformPassword) {
     $newPassword =  changeExistingPassword($newPassword);
