@@ -5,8 +5,6 @@ include '../utils/validators.php';
 include '../utils/session.php';
 
 
-// $id = getLoginSession();
-
 function changeExistingEmail($newEmail) {
     if (!emailPresent($newEmail)) {
         //and after verifying the email
