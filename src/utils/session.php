@@ -1,4 +1,5 @@
 <?php
+
 function setLoginSession($id){
     session_start();
     $_SESSION['id'] = $id;
@@ -11,5 +12,5 @@ function destroyLoginSession(){
 
 function getLoginSession() {
     session_start();
-    return session_id();
+    return $_SESSION['id'];
 }
