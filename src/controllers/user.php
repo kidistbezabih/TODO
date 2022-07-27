@@ -4,35 +4,6 @@ include '../services/user.php';
 include '../utils/validators.php';
 include '../utils/session.php';
 
-// function changeExistingPassword($newPassword) {
-//     if (validatePassword($newPassword)) {
-//         return $newPassword;
-//     }
-// }
-
-// function oldPassword($Password) {
-//     $currentPassword = searchById($id);
-//     $currentPassword = $currentPassword['password'];
-//     if ($currentPassword === $password){
-//         return true;
-//     }
-//     else {
-//         // echo 'Incorrect password!';
-//         return false;
-//     }
-// }
-
-// function confirmPassword($confirmPassword) {
-//     $newPassword =  changeExistingPassword($newPassword);
-//     if (oldPassword($old_password)) {
-//         if ($confirmPassword === $newPassword) {
-//             updateUserPassword($id, $newPassword);
-//         }
-//         else {
-//             echo "Password is not matched!";
-//         }
-//     }
-// }
 
 if (isset($_PUT['change_password'])) {
     $user_id = getLoginSession();
