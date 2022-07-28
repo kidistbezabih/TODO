@@ -5,7 +5,7 @@ function setLoginSession($id){
     $_SESSION['id'] = $id;
 }
 
-function destroyLoginSession(){
+function destroyLoginSession() {
     session_start();
     unset($_SESSION['id']);
 }

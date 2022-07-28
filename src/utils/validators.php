@@ -29,13 +29,19 @@ function validatPassword($password) {
 }
 
 function emailPresent($email) {
-    include "../database/db.php";
+    include_once "../database/db.php";
+    $query = "SELECT * FROM users WHERE email=$email;";
+    echo $query;
 
-    $query = "SELECT * FROM users WHERE email = '$email';";
-    $usersNum = mysqli_query($conn, $email);
+    try {
+    $usersNum = mysqli_query($con, $query);
+    } catch (mysqli_sql_exception $e) { 
+        var_dump($e);
+        exit; 
+     } 
     if (mysqli_num_rows($usersNum) > 0) {
         return true;
     }
     return false;
 }
- 
+

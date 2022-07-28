@@ -1,24 +1,25 @@
 <?php
-include '../database/db.php';
-include '../utils/validators.php';
-include '../utils/session.php';
-include '../services/user.php';
+include_once '../database/db.php';
+include_once '../utils/validators.php';
+include_once '../utils/session.php';
+include_once '../services/user.php';
 
 if (isset($_POST['signup'])) {
     $email =  $_POST['email'];
     $password = $_POST['password'];
     $name = $_POST['name'];
     
-    if(emailPresent($email)) {
-        return "There is already a user with this email!";
+    if (emailPresent($email)) {
+        header("Location: ../../public/pages/auth/signup.php?emailError=useralredyRegisteredWithThisEmail");
     }
-    else{
+    else {
         $user = createUser($name, $email, $password);
         setLoginSession($user['id']);
+        header("Location: ../../public/pages/auth/signin.php");
     }
 }
 
-if(isset($_POST['login'])){
+if (isset($_POST['login'])) {
     $email =  $_POST['email'];
     $password = $_POST['password'];
     $user = searchByEmail($email);
@@ -38,7 +39,7 @@ if(isset($_POST['login'])){
 }
 
 // http://localhost/auth.php?logout=true
-if(isset($_GET['logout'])){
+if (isset($_GET['logout'])) {
     if($_GET['logout'] == "true"){
         destroyLoginSession();
         // redirect to login page        

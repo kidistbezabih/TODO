@@ -2,7 +2,7 @@
 $dbServerName = "localhost";
 $dbUserName = "root";
 $dbPassword = "";
-$dbName = "TODO";
+$dbName = "Todo";
 
 $con = mysqli_connect(
     $dbServerName, 
@@ -10,3 +10,8 @@ $con = mysqli_connect(
     $dbPassword, 
     $dbName
 );
+if ($con->connect_error) {
+    die ("connection failed : ". $con->connect_error);
+}else {
+    echo "connected sucessfully";
+}

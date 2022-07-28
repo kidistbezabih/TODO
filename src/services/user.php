@@ -1,8 +1,9 @@
 <?php
-include '../database/db.php';
-include '../utils/session.php';
+include_once "../database/db.php";
+include_once '../utils/session.php';
 
-function createUser($name, $email, $password,) {
+function createUser($name, $email, $password) {
+    global $con;
     $query = "INSERT INTO Users (
         name, email, password
         ) VALUES ($name, $email, $password);";
@@ -14,37 +15,45 @@ function createUser($name, $email, $password,) {
 }
 
 function searchById($id) {
+    global $con;
     $query = "SELECT * FROM WHERE id = '$id';";
-    $result = mysqli_query($query, $con);
-    $user = mysli_fetch_assoc($result)
+    $result = mysqli_query($con, $query);
+    $user = mysqli_fetch_assoc($result);
     return $user;
 }
  
 function searchByEmail($email){
-    $query = "SELECT * FROM users WHERE email = '$email';";
+    global $con;
+    $query = "SELECT * FROM users WHERE email=$email;";
+    echo $query;
+
     $result = mysqli_query($con, $query);
     $user = mysqli_fetch_assoc($result);
     return $user;
 }
 
 function updateUsersName($id, $newName) {
+    global $con;
     $query = "UPDATE users SET name =  '$newName' WHERE id = '$id';";
-    mysqli_query($query, $con);
+    $result = mysqli_query($con, $query);
     // return $newName;
 }
 
 function updateUserEmail($id, $newEmail) {
+    global $con;
     $query = "UPDATE users SET name =  '$newEmail' WHERE id = '$id';";
     mysqli_query($query, $con);
-    // return $newEmail;+
+    // return $newEmail;
 }
 
 function updateUserPassword($id, $newPassword) {
+    global $con;
     $query = "UPDATE users SET name =  '$newPassword' WHERE id = '$id';";
     mysqli_query($query, $con);
 }
 
 function deleteUser($id) {
+    global $con;
     $query = "DELETE FROM users WHERE id = '$id';";
     mysqli_query($query, $con);
 }
