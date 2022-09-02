@@ -21,37 +21,37 @@ if (isset($_POST['create_task'])) {
   $actual_end_date);
 }
 
-if (isset($_POST['edit'])) {
+if (isset($_PUT['edit'])) {
   $task_id = $_POST['task_id'];
   edit($task_id, $title, $description, $planned_start_date, 
     $planned_end_date);
 }
 
-if (isset($_POST['delete_task'])) {
+if (isset($_DELETE['delete_task'])) {
   $task_id = $_POST['task_id'];
   deleteTask($task_id);
 }
 
-if (isset($_POST['update_status'])) {
+if (isset($_PUT['update_status'])) {
   $task_id = $_POST['task_id'];
   updatStatus($task_id,$status);
 }
 
-if (isset(['get_task'])) {
+if (isset($_GET['get_task'])) {
   $user_id = getLoginSession();
   getTask($user_id);
 }
 
-if (isset(['get_not_completed_tasks'])) {
+if (isset($_GET['get_not_completed_tasks'])) {
   getNotCompletedTasks($user_id);
 }
 
-if (isset(['get_completed_tasks'])) {
+if (isset($_GET['get_completed_tasks'])) {
   $user_id = getLoginSession();
   getCompletedTasks($user_id);
 }
 
-if (isset($_POST['add_feedback'])) {
+if (isset($_PUT['add_feedback'])) {
   $comment = $_POST['comments'];
   $task_id = $_POST['task_id'];
   addFeedback($comment, $task_id);
