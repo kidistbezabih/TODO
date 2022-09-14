@@ -24,6 +24,7 @@ if (isset($_POST['create_task'])) {
   $planned_end_date = $_POST['planned_end_date'];
   $actual_start_date = $_POST['actual_start_date'];
   $actual_end_date = $_POST['actual_end_date'];
+  
   createTask($id, $status, $title, $description, $created_at, 
   $planned_start_date, $planned_end_date, $actual_start_date, 
   $actual_end_date);
@@ -49,7 +50,6 @@ if (isset($_DELETE['delete_task'])) {
 if (isset($_PUT['update_status'])) {
   $task_id = $_PUT['task_id'];
   $status = $_PUT['status'];
-  
   updatStatus($task_id,$status);
 }
 
